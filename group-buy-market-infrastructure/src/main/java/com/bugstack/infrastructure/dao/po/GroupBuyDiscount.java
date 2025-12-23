@@ -1,4 +1,4 @@
- package com.bugstack.infrastructure.dao.po;
+package com.bugstack.infrastructure.dao.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
