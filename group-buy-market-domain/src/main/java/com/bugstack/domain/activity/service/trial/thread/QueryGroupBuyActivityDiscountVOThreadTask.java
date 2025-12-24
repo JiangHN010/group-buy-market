@@ -2,6 +2,7 @@ package com.bugstack.domain.activity.service.trial.thread;
 
 import com.bugstack.domain.activity.adapter.repository.IActivityRepository;
 import com.bugstack.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
+import com.bugstack.domain.activity.model.valobj.SCSkuActivityVO;
 
 import java.util.concurrent.Callable;
 
@@ -12,21 +13,40 @@ import java.util.concurrent.Callable;
  */
 public class QueryGroupBuyActivityDiscountVOThreadTask implements Callable<GroupBuyActivityDiscountVO> {
 
-    private String source;
+    /**
+     * 来源
+     */
+    private final String source;
 
-    private String chanel;
+    /**
+     * 渠道
+     */
+    private final String channel;
 
-    private IActivityRepository repository;
+    /**
+     * 商品ID
+     */
+    private final String goodsId;
 
-    public QueryGroupBuyActivityDiscountVOThreadTask(String source, String chanel, IActivityRepository repository) {
+    /**
+     * 活动仓储
+     */
+    private final IActivityRepository activityRepository;
+
+    public QueryGroupBuyActivityDiscountVOThreadTask(String source, String channel, String goodsId, IActivityRepository activityRepository) {
         this.source = source;
-        this.chanel = chanel;
-        this.repository = repository;
+        this.channel = channel;
+        this.goodsId = goodsId;
+        this.activityRepository = activityRepository;
     }
 
     @Override
     public GroupBuyActivityDiscountVO call() throws Exception {
-
-        return repository.groupBuyActivityDiscountVO(source, chanel);
+        // 查询渠道商品活动配置关联配置
+        SCSkuActivityVO scSkuActivityVO = activityRepository.querySCSkuActivityBySCGoodsId(source, channel, goodsId);
+        if (null == scSkuActivityVO) return null;
+        // 查询活动配置
+        return activityRepository.queryGroupBuyActivityDiscountVO(scSkuActivityVO.getActivityId());
     }
+
 }

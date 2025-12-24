@@ -6,5 +6,5 @@ package com.bugstack.types.design.framework.tree;
  * @Description: 策略映射器
  */
 public interface StrategyMapper<T ,D ,R> {
-    StrategyHandler<T,D,R> get(T requestParameter,D dynamicContext);
+    StrategyHandler<T,D,R> get(T requestParameter,D dynamicContext) throws Exception;
 }

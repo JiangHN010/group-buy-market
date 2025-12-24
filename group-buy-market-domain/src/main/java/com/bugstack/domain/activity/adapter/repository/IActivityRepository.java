@@ -1,6 +1,7 @@
 package com.bugstack.domain.activity.adapter.repository;
 
 import com.bugstack.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
+import com.bugstack.domain.activity.model.valobj.SCSkuActivityVO;
 import com.bugstack.domain.activity.model.valobj.SkuVO;
 
 /**
@@ -10,7 +11,10 @@ import com.bugstack.domain.activity.model.valobj.SkuVO;
  */
 public interface IActivityRepository {
 
-    GroupBuyActivityDiscountVO groupBuyActivityDiscountVO(String source ,String channel);
+    GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(Long activityId);
 
-    SkuVO querySkuByGoodsId(String skuId);
+    SkuVO querySkuByGoodsId(String goodsId);
+
+    SCSkuActivityVO querySCSkuActivityBySCGoodsId(String source, String channel, String goodsId);
+
 }
