@@ -22,7 +22,7 @@ public class TrialBalanceEntity {
     private String goodsId;
     private String goodsName;
     private BigDecimal originalPrice;
-    private BigDecimal deductionprice;
+    private BigDecimal deductionPrice;
     private Integer targetCount;
     private Date startTime;
     private Date endTime;

@@ -1,5 +1,6 @@
 package com.bugstack.infrastructure.dao.po;
 
+import com.bugstack.domain.activity.model.valobj.DiscountTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

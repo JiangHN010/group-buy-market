@@ -3,10 +3,12 @@ package com.bugstack.domain.activity.service.trial.node;
 import com.bugstack.domain.activity.model.entity.MarketProductEntity;
 import com.bugstack.domain.activity.model.entity.TrialBalanceEntity;
 import com.bugstack.domain.activity.service.trial.AbstractGroupBuyMarketSupport;
-import com.bugstack.domain.activity.service.trial.factory.DefaultActivityStategyStrategyFactory;
+import com.bugstack.domain.activity.service.trial.factory.DefaultActivityStrategyFactory;
 import com.bugstack.types.design.framework.tree.StrategyHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @Author Haonan Jiang
@@ -15,15 +17,18 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-public class SwitchRoot extends AbstractGroupBuyMarketSupport<MarketProductEntity, DefaultActivityStategyStrategyFactory.DynamicContext, TrialBalanceEntity> {
+public class SwitchRoot extends AbstractGroupBuyMarketSupport<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity> {
+
+    @Resource
+    private MarketNode marketNode;
 
     @Override
-    public TrialBalanceEntity apply(MarketProductEntity requestParameter, DefaultActivityStategyStrategyFactory.DynamicContext dynamicContext) throws Exception {
-        return null;
+    public TrialBalanceEntity doApply(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws Exception {
+        return router(requestParameter, dynamicContext);
     }
 
     @Override
-    public StrategyHandler<MarketProductEntity, DefaultActivityStategyStrategyFactory.DynamicContext, TrialBalanceEntity> get(MarketProductEntity requestParameter, DefaultActivityStategyStrategyFactory.DynamicContext dynamicContext) {
-        return null;
+    public StrategyHandler<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity> get(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) {
+        return marketNode;
     }
 }
