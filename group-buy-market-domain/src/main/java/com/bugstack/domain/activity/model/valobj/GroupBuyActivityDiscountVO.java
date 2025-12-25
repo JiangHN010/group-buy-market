@@ -1,11 +1,14 @@
 package com.bugstack.domain.activity.model.valobj;
 
+import com.bugstack.types.common.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
+import java.util.concurrent.locks.Condition;
 
 /**
  * @author Fuzhengwei bugstack.cn @小傅哥
@@ -79,6 +82,21 @@ public class GroupBuyActivityDiscountVO {
      */
     private String tagScope;
 
+    public boolean isVisble() {
+        if (StringUtils.isBlank(this.tagScope)) return TagScopeEnumVO.VISIBLE.getAllow();
+        String[] split = this.tagScope.split(Constants.SPLIT);
+        if (split.length >= 0 && split[0].equals("1")) return TagScopeEnumVO.VISIBLE.getRefuse();
+        return TagScopeEnumVO.VISIBLE.getAllow();
+    }
+
+    public boolean isEnabled() {
+        if(StringUtils.isBlank(this.tagScope)) return TagScopeEnumVO.ENABLED.getAllow();
+        String[] split = this.tagScope.split(Constants.SPLIT);
+        if (split.length >= 2 && split[1].equals("2")) {
+            TagScopeEnumVO.ENABLED.getRefuse() ;
+        }
+        return TagScopeEnumVO.ENABLED.getAllow();
+    }
     @Getter
     @Builder
     @AllArgsConstructor

@@ -43,6 +43,10 @@ public class DefaultActivityStrategyFactory {
         private BigDecimal DeductionPrice;
         // 商品信息
         private SkuVO skuVO;
+        //活动可见性限制
+        private boolean visible;
+        //活动可参与限制
+        private boolean enable;
     }
 
 }

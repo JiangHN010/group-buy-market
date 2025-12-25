@@ -23,6 +23,7 @@ public class QuerySkuVOFromDBThreadTask implements Callable<SkuVO> {
     }
 
 
+    //查询商品
     @Override
     public SkuVO call() throws Exception {
         return activityRepository.querySkuByGoodsId(goodsId);
