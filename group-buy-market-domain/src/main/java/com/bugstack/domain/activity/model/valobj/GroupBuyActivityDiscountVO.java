@@ -85,7 +85,7 @@ public class GroupBuyActivityDiscountVO {
     public boolean isVisble() {
         if (StringUtils.isBlank(this.tagScope)) return TagScopeEnumVO.VISIBLE.getAllow();
         String[] split = this.tagScope.split(Constants.SPLIT);
-        if (split.length >= 0 && split[0].equals("1")) return TagScopeEnumVO.VISIBLE.getRefuse();
+        if (split.length >= 1 && split[0].equals("1")) return TagScopeEnumVO.VISIBLE.getRefuse();
         return TagScopeEnumVO.VISIBLE.getAllow();
     }
 
@@ -93,7 +93,8 @@ public class GroupBuyActivityDiscountVO {
         if(StringUtils.isBlank(this.tagScope)) return TagScopeEnumVO.ENABLED.getAllow();
         String[] split = this.tagScope.split(Constants.SPLIT);
         if (split.length >= 2 && split[1].equals("2")) {
-            TagScopeEnumVO.ENABLED.getRefuse() ;
+           return TagScopeEnumVO.ENABLED.getRefuse() ;
+
         }
         return TagScopeEnumVO.ENABLED.getAllow();
     }
