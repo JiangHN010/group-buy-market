@@ -106,7 +106,7 @@ public class ActivityRepository implements IActivityRepository {
     }
 
     @Override
-    public boolean isTagCrowRange(String tagId, String userId) {
+    public boolean isTagCrowdRange(String tagId, String userId) {
 
         RBitSet bitSet = redisService.getBitSet(tagId);
         if(!bitSet.isExists()) return true;

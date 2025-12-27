@@ -1,7 +1,7 @@
 package com.bugstack.domain.activity.service.discount.impl;
 
 import com.bugstack.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
-import com.bugstack.domain.activity.service.discount.AbstractDiscountCalculateservice;
+import com.bugstack.domain.activity.service.discount.AbstractDiscountCalculateService;
 import com.bugstack.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  */
 @Slf4j
 @Service("ZK")
-public class ZKCalculateService extends AbstractDiscountCalculateservice {
+public class ZKCalculateService extends AbstractDiscountCalculateService{
 
     @Override
     protected BigDecimal doCalculate(BigDecimal originalPrice, GroupBuyActivityDiscountVO.GroupBuyDiscount groupBuyDiscount) {

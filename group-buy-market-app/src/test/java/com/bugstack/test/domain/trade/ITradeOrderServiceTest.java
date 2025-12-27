@@ -78,6 +78,7 @@ public class ITradeOrderServiceTest {
                         .channel(channel)
                         .goodsId(goodsId)
                         .goodsName(trialBalanceEntity.getGoodsName())
+                        .payPrice(trialBalanceEntity.getPayPrice())
                         .originalPrice(trialBalanceEntity.getOriginalPrice())
                         .deductionPrice(trialBalanceEntity.getDeductionPrice())
                         .outTradeNo(outTradeNo)

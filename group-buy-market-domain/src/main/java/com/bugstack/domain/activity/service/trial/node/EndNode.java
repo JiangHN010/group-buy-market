@@ -28,6 +28,7 @@ public class EndNode extends AbstractGroupBuyMarketSupport<MarketProductEntity, 
         GroupBuyActivityDiscountVO groupBuyActivityDiscountVO = dynamicContext.getGroupBuyActivityDiscountVO();
         SkuVO skuVO = dynamicContext.getSkuVO();
         BigDecimal discountPrice = dynamicContext.getDeductionPrice();
+        BigDecimal payPrice = dynamicContext.getPayPrice();
         // 返回空结果
         return TrialBalanceEntity.builder()
                 .goodsId(skuVO.getGoodsId())
@@ -35,6 +36,7 @@ public class EndNode extends AbstractGroupBuyMarketSupport<MarketProductEntity, 
                 .originalPrice(skuVO.getOriginalPrice())
                 .deductionPrice(discountPrice)
                 .targetCount(groupBuyActivityDiscountVO.getTarget())
+                .payPrice(payPrice)
                 .startTime(groupBuyActivityDiscountVO.getStartTime())
                 .endTime(groupBuyActivityDiscountVO.getEndTime())
                 .isVisible(dynamicContext.isVisible())
